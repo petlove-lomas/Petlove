@@ -1,161 +1,438 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Love - Todo para su bienestar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Pet Love - Lomas de Zamora</title>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #eef7f0;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-/* HERO */
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('https://images.unsplash.com/photo-1601758123927-196c6c7c2f9b');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(107, 114, 42, 0.4), rgba(107, 114, 42, 0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f8f5f0" width="1200" height="800"/><text x="600" y="400" font-family="serif" font-size="20" fill="%23ddd" text-anchor="middle" dominant-baseline="middle">Pet & Plant Background</text></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-}
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+        }
 
-.hero p {
-    margin: 15px 0;
-    font-size: 1.1rem;
-}
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
 
-.btn {
-    background: #25D366;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
 
-/* SECCIONES */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
+        .btn {
+            display: inline-block;
+            background: #f8f5f0;
+            color: #6b722a;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(248, 245, 240, 0.4);
+        }
 
-h2 {
-    color: #2e7d32;
-    margin-bottom: 30px;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(248, 245, 240, 0.6);
+            color: #6b722a;
+        }
 
-/* PRODUCTOS */
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-.product {
-    background: white;
-    width: 250px;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
+        .btn-whatsapp:hover {
+            background: #20b358;
+            transform: translateY(-3px);
+        }
 
-.product:hover {
-    transform: scale(1.05);
-}
+        /* SECTIONS */
+        section {
+            padding: 100px 0;
+        }
 
-.product img {
-    width: 100%;
-    border-radius: 10px;
-}
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #6b722a;
+            margin-bottom: 4rem;
+            position: relative;
+        }
 
-.product h3 {
-    margin: 10px 0 5px;
-}
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #d4c9a8;
+            border-radius: 2px;
+        }
 
-.product p {
-    margin: 5px 0;
-}
+        /* CATEGORIES */
+        .categories {
+            background: #f8f5f0;
+        }
 
-/* FOOTER */
-.footer {
-    background: #2e7d32;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-</style>
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(248, 245, 240, 0.5);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6b722a, #8b7d5f);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+        }
+
+        /* ABOUT */
+        .about {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #6a6a6a;
+            margin-bottom: 0;
+        }
+
+        /* BLOG */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, #6b722a, #8b7d5f);
+            position: relative;
+        }
+
+        .blog-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: #8b7d5f;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            font-size: 1.3rem;
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #6a6a6a;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #f8f5f0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: #6b722a;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+        }
+
+        .contact-item i {
+            color: #6b722a;
+            width: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 0;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
-
-<!-- HERO -->
-<section class="hero">
-    <h1>Pet Love</h1>
-    <p>Todo para tu mascota y tu jardín en Lomas de Zamora</p>
-
-    <a href="https://wa.me/1157074006" target="_blank" class="btn">
-        Pedir por WhatsApp
-    </a>
-</section>
-
-<!-- PRODUCTOS -->
-<section class="section">
-    <h2>Productos destacados</h2>
-
-    <div class="products">
-
-        <div class="product">
-            <img src="https://via.placeholder.com/250" alt="">
-            <h3>Alimento Balanceado</h3>
-            <p>Calidad premium</p>
-            <a href="https://wa.me/1157074006" class="btn">Consultar</a>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Todo para su bienestar. En un solo lugar.</h1>
+                <p>Alimentos, cuidado y naturaleza para quienes forman parte de tu vida</p>
+                <a href="#categories" class="btn">Ver productos</a>
+            </div>
         </div>
+    </section>
 
-        <div class="product">
-            <img src="https://via.placeholder.com/250" alt="">
-            <h3>Plantas de interior</h3>
-            <p>Ideales para tu hogar</p>
-            <a href="https://wa.me/1157074006" class="btn">Consultar</a>
+    <!-- CATEGORIES SECTION -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-dog"></i>
+                    </div>
+                    <h3>Para Perros</h3>
+                    <p>Alimentos premium, juguetes y todo lo necesario para el cuidado de tu mejor amigo.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <h3>Para Gatos</h3>
+                    <p>Productos de calidad para mantener felices y saludables a tus felinos.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Plantas</h3>
+                    <p>Próximamente: Plantas naturales que complementan el cuidado de tu hogar.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="product">
-            <img src="https://via.placeholder.com/250" alt="">
-            <h3>Shampoo mascotas</h3>
-            <p>Cuidado y limpieza</p>
-            <a href="https://wa.me/1157074006" class="btn">Consultar</a>
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Nuestra Filosofía</h2>
+            <div class="about">
+                <p>Seleccionamos productos que cuidan la salud de tus mascotas y su entorno. Calidad natural para quienes más querés.</p>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- BLOG SECTION -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Consejos & Inspiración</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">15 Oct 2024</div>
+                        <h3>Cómo cuidar tus plantas de interior</h3>
+                        <p class="blog-excerpt">Descubrí los secretos para mantener tus plantas vibrantes y saludables durante todo el año...</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">12 Oct 2024</div>
+                        <h3>Nutrición balanceada para perros</h3>
+                        <p class="blog-excerpt">Guía completa sobre cómo elegir el alimento ideal según la edad y necesidades de tu perro...</p>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <div class="blog-date">8 Oct 2024</div>
+                        <h3>Plantas seguras para gatos</h3>
+                        <p class="blog-excerpt">Descubrí qué plantas son seguras para tus gatos y cómo crear un ambiente verde sin riesgos...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-<!-- UBICACION -->
-<section class="section">
-    <h2>Ubicación</h2>
-    <p>Lomas de Zamora</p>
+    <!-- CONTACT SECTION -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactanos</h2>
+            <div class="contact-content">
+                <div>
+                    <h3>Estamos cerca de vos</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lomas de Zamora, Buenos Aires</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Lun - Sáb: 9am - 7pm</span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://wa.me/5491123456789?text=Hola!%20Quiero%20consultar%20sobre%20productos%20para%20mi%20mascota" 
+                       class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Hablá por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <a href="https://www.google.com/maps/place/PET+LOVE" target="_blank" class="btn">
-        Ver en Google Maps
-    </a>
-</section>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-<!-- FOOTER -->
-<div class="footer">
-    <p>Pet Love - Tu lugar de confianza</p>
-</div>
-
+        // Add scroll effect to hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
 </body>
 </html>
